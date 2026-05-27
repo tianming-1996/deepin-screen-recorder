@@ -56,7 +56,17 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok, const QRect &rect, const qrea
             ok = false;
             qDebug() << __FUNCTION__ << __LINE__ << "Get Pixmap:" << res.size() << "try failed at " << count << "times";
         }
-        return res.copy(recordRect);
+        QPixmap copied = res.copy(recordRect);
+        qInfo() << "[ScrollShotDiag] grabEntireDesktop wayland"
+                << "inputRect" << rect
+                << "devicePixelRatio" << devicePixelRatio
+                << "recordRect" << recordRect
+                << "fullscreenSize" << res.size()
+                << "copySize" << copied.size()
+                << "ok" << ok
+                << "attempts" << count
+                << "reply" << reply.value();
+        return copied;
     }
 
     QScreen *t_primaryScreen = QGuiApplication::primaryScreen();

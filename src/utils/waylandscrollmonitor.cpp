@@ -5,7 +5,7 @@
 
 #include "waylandscrollmonitor.h"
 
-#define SCROLL_DOWN 15.0
+#define SCROLL_DOWN 5.0
 
 WaylandScrollMonitor::WaylandScrollMonitor(QObject *parent) : QObject(parent)
     , m_connection(nullptr)
@@ -24,9 +24,12 @@ WaylandScrollMonitor::~WaylandScrollMonitor()
 // 手动滚动模拟
 void WaylandScrollMonitor::slotManualScroll(float direction)
 {
+    qInfo() << "[ScrollShotDiag] manualFakeAxis" << direction << "fakeinput" << m_fakeinput;
     if (m_fakeinput != nullptr) {
         // direction 滚动方向
         m_fakeinput->requestPointerAxisForCapture(Qt::Vertical, static_cast<double>(direction));
+    } else {
+        qWarning() << "[ScrollShotDiag] manualFakeAxisSkipped fakeinput is null";
     }
 }
 // 初始化队列、开启注册器
@@ -51,10 +54,12 @@ void WaylandScrollMonitor::setupRegistry()
 // 初始化Fakeinput
 void WaylandScrollMonitor::setupFakeinput(quint32 name, quint32 version)
 {
+    qInfo() << "[ScrollShotDiag] fakeInputAnnounced" << name << version;
     if (m_fakeinput == nullptr) {
         m_fakeinput = new KWayland::Client::FakeInput(this);
         m_fakeinput->setup(m_registry->bindFakeInput(name, version));
         m_fakeinput->authenticate(qAppName(), "wayland scroll monitor");
+        qInfo() << "[ScrollShotDiag] fakeInputAuthenticated" << qAppName() << m_fakeinput;
     }
 }
 
@@ -64,8 +69,12 @@ void WaylandScrollMonitor::initWaylandScrollThread()
     // 初始化ConnectionThread
     m_connection = new KWayland::Client::ConnectionThread(this);
     // 注册器
-    connect(m_connection, &KWayland::Client::ConnectionThread::connected, this, &WaylandScrollMonitor::setupRegistry, Qt::QueuedConnection);
+    connect(m_connection, &KWayland::Client::ConnectionThread::connected, this, [this] {
+        qInfo() << "[ScrollShotDiag] waylandConnectionConnected";
+        setupRegistry();
+    }, Qt::QueuedConnection);
     connect(m_connection, &KWayland::Client::ConnectionThread::connectionDied, this, [this] {
+        qWarning() << "[ScrollShotDiag] waylandConnectionDied";
         if (m_queue)
         {
             delete m_queue;
@@ -76,6 +85,7 @@ void WaylandScrollMonitor::initWaylandScrollThread()
         m_connection = nullptr;
     });
     connect(m_connection, &KWayland::Client::ConnectionThread::failed, this, [this] {
+        qWarning() << "[ScrollShotDiag] waylandConnectionFailed";
         m_connection->deleteLater();
         m_connection = nullptr;
     });
@@ -113,8 +123,11 @@ void WaylandScrollMonitor::releaseWaylandScrollThread()
 // 自动滚动执行
 void WaylandScrollMonitor::doWaylandAutoScroll()
 {
+    qInfo() << "[ScrollShotDiag] autoFakeAxis" << SCROLL_DOWN << "fakeinput" << m_fakeinput;
     if (m_fakeinput != nullptr) {
-        // Qt::Vertical 垂直滚动，15.0 代表向下滚动
+        // Qt::Vertical 垂直滚动，正值代表向下滚动
         m_fakeinput->requestPointerAxisForCapture(Qt::Vertical, SCROLL_DOWN);
+    } else {
+        qWarning() << "[ScrollShotDiag] autoFakeAxisSkipped fakeinput is null";
     }
 }

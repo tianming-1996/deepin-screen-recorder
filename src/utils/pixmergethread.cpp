@@ -13,7 +13,7 @@ const int PixMergeThread::TEMPLATE_HEIGHT = 50;
 
 PixMergeThread::PixMergeThread(QObject *parent) : QThread(parent)
 {
-    m_lastTime = int(QDateTime::currentDateTime().toTime_t());
+    m_lastTime = QDateTime::currentMSecsSinceEpoch();
 }
 
 PixMergeThread::~PixMergeThread()
@@ -123,7 +123,7 @@ void PixMergeThread::run()
 void PixMergeThread::setScrollModel(bool isManualScrollMode)
 {
     m_isManualScrollModel = isManualScrollMode;
-    //m_lastTime = QDateTime::currentDateTime().toTime_t();
+    //m_lastTime = QDateTime::currentMSecsSinceEpoch();
 }
 
 void PixMergeThread::clearCurImg()
@@ -132,9 +132,9 @@ void PixMergeThread::clearCurImg()
 }
 
 //计算时间差
-void PixMergeThread::calculateTimeDiff(int time)
+void PixMergeThread::calculateTimeDiff(qint64 time)
 {
-    m_curTimeDiff = (time - m_lastTime) * 100;
+    m_curTimeDiff = time - m_lastTime;
     qDebug() << "time:" << time << "m_lastTime" << m_lastTime << "m_curTimeDiff" << m_curTimeDiff;
     m_lastTime = time;
 }
@@ -244,6 +244,18 @@ bool PixMergeThread::splicePictureUp(const cv::Mat &image)
     /*查找最大值及位置*/
     cv::Point minLoc, maxLoc;
     minMaxLoc(res, &minVal, &maxVal, &minLoc, &maxLoc);
+    qInfo() << "[ScrollShotDiag] mergeUp"
+            << "curCols" << m_curImg.cols
+            << "curRows" << m_curImg.rows
+            << "newCols" << image.cols
+            << "newRows" << image.rows
+            << "maxVal" << maxVal
+            << "maxLocX" << maxLoc.x
+            << "maxLocY" << maxLoc.y
+            << "manual" << m_isManualScrollModel
+            << "count" << m_MeragerCount
+            << "bottomHeight" << m_bottomHeight
+            << "timeDiff" << m_curTimeDiff;
     /*图像拼接*/
     cv::Mat temp1, result;
     if (maxVal >= thresholdv && maxLoc.y > 0) { //只有度量值大于阈值才认为是匹配
@@ -346,6 +358,22 @@ bool PixMergeThread::splicePictureDown(const cv::Mat &image)
     /*查找最大值及位置*/
     cv::Point minLoc, maxLoc;
     minMaxLoc(res, &minVal, &maxVal, &minLoc, &maxLoc);
+    qInfo() << "[ScrollShotDiag] mergeDown"
+            << "curCols" << m_curImg.cols
+            << "curRows" << m_curImg.rows
+            << "newCols" << image.cols
+            << "newRows" << image.rows
+            << "maxVal" << maxVal
+            << "maxLocX" << maxLoc.x
+            << "maxLocY" << maxLoc.y
+            << "manual" << m_isManualScrollModel
+            << "count" << m_MeragerCount
+            << "headHeight" << m_headHeight
+            << "timeDiff" << m_curTimeDiff;
+    if (!m_isManualScrollModel && m_MeragerCount == 1 && maxVal >= thresholdv && maxLoc.y == 0) {
+        qDebug() << "2 自动滚动首帧未产生位移，等待下一次滚动";
+        return false;
+    }
     /*图像拼接*/
     cv::Mat temp1, result;
     if (maxVal >= thresholdv && maxLoc.y > 0) { //只有度量值大于阈值才认为是匹配
@@ -359,14 +387,7 @@ bool PixMergeThread::splicePictureDown(const cv::Mat &image)
             QRect rect = getScrollChangeRectArea(curImg, image);
             if (m_isManualScrollModel == false) { //自动滚动时异常处理
                 if (m_MeragerCount == 1) {
-                    if (rect.width() < 0 || rect.height() < 0) {
-                        qDebug() << "1 拼接失败了";
-                        emit merageError(Failed);
-                    } else {
-                        m_headHeight = -1;
-                        qDebug() << "1 无效区域，点击调整捕捉区域";
-                        emit invalidAreaError(InvalidArea, rect); //无效区域，点击调整捕捉区域
-                    }
+                    qDebug() << "1 自动滚动首帧位移过小，等待下一次滚动";
                 } else {
                     qDebug() << "======1==拼接到重复图片，拼接到低了=====";
                     emit merageError(ReachBottom);

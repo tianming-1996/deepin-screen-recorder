@@ -1353,6 +1353,15 @@ void MainWindow::initScrollShot()
     }
     //定时2s后滚动截图的提示消失
     m_tipShowtimer = new QTimer(this);
+    m_waylandManualScrollTimer = new QTimer(this);
+    m_waylandManualScrollTimer->setSingleShot(true);
+    connect(m_waylandManualScrollTimer, &QTimer::timeout, this, [this] {
+        if (!m_scrollShot || status::scrollshot != m_functionType || m_isErrorWithScrollShot) {
+            return;
+        }
+        scrollShotGrabPixmap(m_waylandManualScrollPreviewPostion, m_waylandManualScrollDirection,
+                             m_waylandManualScrollMouseTime);
+    });
     connect(m_tipShowtimer, &QTimer::timeout, this, [ = ]() {
         m_tipShowtimer->stop();
         m_scrollShotTip->hide();
@@ -1489,6 +1498,18 @@ void MainWindow::handleManualScrollShot(int mouseTime, int direction)
     m_scrollShotTip->hide();
     m_isAdjustArea = false;
     update();
+    if (Utils::isWaylandMode) {
+        m_waylandManualScrollPreviewPostion = m_previewPostion;
+        m_waylandManualScrollDirection = direction;
+        m_waylandManualScrollMouseTime = mouseTime;
+        if (m_waylandManualScrollTimer) {
+            m_waylandManualScrollTimer->start(320);
+        } else {
+            scrollShotGrabPixmap(m_previewPostion, direction, mouseTime);
+        }
+        return;
+    }
+
     static int num = 1;
     ++num;
     if (num % 3 == 0) {
@@ -1523,7 +1544,7 @@ void MainWindow::showAdjustArea()
 }
 #ifdef OCR_SCROLL_FLAGE_ON
 //滚动截图模式，抓取当前捕捉区域的图片，传递给滚动截图处理类进行图片的拼接
-void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostion, int direction, int mouseTime)
+void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostion, int direction, qint64 mouseTime)
 {
 
 //不同的平台延时时间不同
@@ -1535,6 +1556,12 @@ void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostio
     static int delayTime = 50;
 #endif
     qDebug() << QSysInfo::currentCpuArchitecture() << delayTime;
+    qInfo() << "[ScrollShotDiag] scrollShotGrabPixmap start"
+            << "scrollType" << m_scrollShotType
+            << "direction" << direction
+            << "mouseTime" << mouseTime
+            << "previewPostion" << previewPostion
+            << "delayTime" << delayTime;
     //滚动截图处理类：设置滚动截图的模式
     if (ScrollShotType::AutoScroll == m_scrollShotType) {
         m_scrollShot->setScrollModel(false);
@@ -1563,6 +1590,12 @@ void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostio
             QRect rect(recordX + m_scrollShotOffsetXY, recordY + m_scrollShotOffsetXY, recordWidth - m_scrollShotOffsetWH, recordHeight - m_scrollShotOffsetWH);
             //抓取捕捉区域图片
             QPixmap img = m_screenGrabber.grabEntireDesktop(ok, rect, m_pixelRatio);
+            qInfo() << "[ScrollShotDiag] scrollShotGrabPixmap image"
+                    << "previewInside" << true
+                    << "ok" << ok
+                    << "rect" << rect
+                    << "pixelRatio" << m_pixelRatio
+                    << "imageSize" << img.size();
             //滚动截图处理类进行图片的拼接
             m_scrollShot->addPixmap(img, direction);
             if (m_previewWidget)
@@ -1582,6 +1615,12 @@ void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostio
         QRect rect(recordX + m_scrollShotOffsetXY, recordY + m_scrollShotOffsetXY, recordWidth - m_scrollShotOffsetWH, recordHeight - m_scrollShotOffsetWH);
         //抓取捕捉区域图片
         QPixmap img = m_screenGrabber.grabEntireDesktop(ok, rect, m_pixelRatio);
+        qInfo() << "[ScrollShotDiag] scrollShotGrabPixmap image"
+                << "previewInside" << false
+                << "ok" << ok
+                << "rect" << rect
+                << "pixelRatio" << m_pixelRatio
+                << "imageSize" << img.size();
         //滚动截图处理类进行图片的拼接
         m_scrollShot->addPixmap(img, direction);
     }
@@ -2117,23 +2156,37 @@ void MainWindow::wheelEvent(QWheelEvent *event)
     int y = this->cursor().pos().y();
 
     //将当前捕捉区域画为一个矩形
-    QRect recordRect {
-        static_cast<int>(recordX * m_pixelRatio),
-        static_cast<int>(recordY * m_pixelRatio),
-        static_cast<int>(recordWidth * m_pixelRatio),
-        static_cast<int>(recordHeight * m_pixelRatio)
-    };
+    QRect recordRect(recordX, recordY, recordWidth, recordHeight);
     //当前鼠标的点
     QPoint mouseMovePoint(x, y);
+    qInfo() << "[ScrollShotDiag] waylandWheel"
+            << "delta" << event->delta()
+            << "cursor" << mouseMovePoint
+            << "recordRect" << recordRect
+            << "contains" << recordRect.contains(mouseMovePoint)
+            << "scrollStatus" << m_scrollShotStatus
+            << "scrollType" << m_scrollShotType
+            << "isError" << m_isErrorWithScrollShot;
     //判断当鼠标位置是否在捕捉区域内部,不在捕捉区域内则暂停自动滚动
     if (!recordRect.contains(mouseMovePoint))
         return;
     if (m_scrollShot) {
-        int time = int (QDateTime::currentDateTime().toTime_t());
-        float len = (event->delta() > 15.0) ? -15.0 : 15.0; // 获取滚轮方向
-        int direction = (fabs(double(len) - 15.0) <= EPSILON) ? 5 : 4; // 获取滚轮方向
-        scrollShotMouseScrollEvent(time, direction, x, y);
+        if (m_isErrorWithScrollShot)
+            return;
+
+        qint64 time = QDateTime::currentMSecsSinceEpoch();
+        float len = (event->delta() > 0) ? -5.0 : 5.0; // 获取滚轮方向
+        int direction = (fabs(double(len) - 5.0) <= EPSILON) ? 5 : 4; // 获取滚轮方向
+        m_scrollShotType = ScrollShotType::ManualScroll;
+        if (m_scrollShotStatus == 0) {
+            scrollShotMouseScrollEvent(time, direction, x, y);
+        }
         m_scrollShot->sigalWheelScrolling(len);
+        QTimer::singleShot(200, this, [ = ] {
+            if (m_scrollShot && status::scrollshot == m_functionType && !m_isErrorWithScrollShot) {
+                scrollShotMouseScrollEvent(QDateTime::currentMSecsSinceEpoch(), direction, x, y);
+            }
+        });
         qDebug() << __FUNCTION__ << __LINE__;
     }
 #endif
@@ -5204,17 +5257,20 @@ void MainWindow::scrollShotMouseMoveEvent(int x, int y)
  * @param x 当前的x坐标
  * @param y 当前的y坐标
  */
-void MainWindow::scrollShotMouseScrollEvent(int mouseTime, int direction, int x, int y)
+void MainWindow::scrollShotMouseScrollEvent(qint64 mouseTime, int direction, int x, int y)
 {
 #ifdef OCR_SCROLL_FLAGE_ON
-    QRect recordRect {
-        static_cast<int>(recordX * m_pixelRatio),
-        static_cast<int>(recordY * m_pixelRatio),
-        static_cast<int>(recordWidth * m_pixelRatio),
-        static_cast<int>(recordHeight * m_pixelRatio)
-    };
+    QRect recordRect(recordX, recordY, recordWidth, recordHeight);
     //当前鼠标滚动的点
     QPoint mouseScrollPoint(x, y);
+    qInfo() << "[ScrollShotDiag] scrollMouseEvent"
+            << "mouseTime" << mouseTime
+            << "direction" << direction
+            << "point" << mouseScrollPoint
+            << "recordRect" << recordRect
+            << "contains" << recordRect.contains(mouseScrollPoint)
+            << "status" << m_scrollShotStatus
+            << "type" << m_scrollShotType;
     //判断鼠标滚动的位置是否是在捕捉区域内部，不在捕捉区域内部不进行处理
     if (!recordRect.contains(mouseScrollPoint)) return;
 
