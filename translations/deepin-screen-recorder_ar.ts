@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ar">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>شرح</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>ترجمة</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>اسأل AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>ملخص</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ or press the shortcut again to stop recording</source>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ or press the shortcut again to stop recording</source>
         <source>Pin Screenshots</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ or press the shortcut again to stop recording</source>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">لقطة شاشة</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ or press the shortcut again to stop recording</source>
         <translation>انتهت عملية التسجيل</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>تم حفظ 1%</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>تسجيل</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">إلتقاط الشاشة</translation>
     </message>
 </context>
 <context>

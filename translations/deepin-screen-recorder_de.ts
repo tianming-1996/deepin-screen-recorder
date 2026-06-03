@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Erklären</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Übersetzen</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>AI fragen</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Zusammenfassung</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ oder drücken Sie die Tastenkombination erneut, um die Aufnahme zu stoppen</tran
         <source>Open Folder</source>
         <translation>Ordner öffnen</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ oder drücken Sie die Tastenkombination erneut, um die Aufnahme zu stoppen</tran
         <source>Pin Screenshots</source>
         <translation>Bildschirmfotos anheften</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ oder drücken Sie die Tastenkombination erneut, um die Aufnahme zu stoppen</tran
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Bildschirmaufnahme</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Wird aufgenommen</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ oder drücken Sie die Tastenkombination erneut, um die Aufnahme zu stoppen</tran
         <translation>Aufnahme beendet</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Gespeichert unter %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Aufnehmen</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Ordner öffnen</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Bildschirmaufnahme</translation>
     </message>
 </context>
 <context>

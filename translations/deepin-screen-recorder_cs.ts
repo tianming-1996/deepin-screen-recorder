@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="cs">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Vysvětlit</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Přeložit</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Zeptejte se AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Shrnutí</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ v oznamovací oblasti panelu nebo stiskněte klávesovou zkratku</translation>
         <source>Open Folder</source>
         <translation>Otevřít složku</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ v oznamovací oblasti panelu nebo stiskněte klávesovou zkratku</translation>
         <source>Pin Screenshots</source>
         <translation>Připnout snímky obrazovky</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ v oznamovací oblasti panelu nebo stiskněte klávesovou zkratku</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Nahrávání</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ v oznamovací oblasti panelu nebo stiskněte klávesovou zkratku</translation>
         <translation>Záznam dokončen</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Uloženo do %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Pořídit záznam</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Otevřít složku</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Zachytávání obrazovky</translation>
     </message>
 </context>
 <context>

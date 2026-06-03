@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="nl">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Uitleggen</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Vertalen</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Vraag AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Samenvatting</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ of druk nogmaals op de sneltoets om te stoppen</translation>
         <source>Open Folder</source>
         <translation>Map openen</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ of druk nogmaals op de sneltoets om te stoppen</translation>
         <source>Pin Screenshots</source>
         <translation>Schermfoto&apos;s vastmaken</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ of druk nogmaals op de sneltoets om te stoppen</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Schermfoto</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Opname</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ of druk nogmaals op de sneltoets om te stoppen</translation>
         <translation>De opname is afgerond</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Opgeslagen in %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Opnemen</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Map openen</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Scherm vastleggen</translation>
     </message>
 </context>
 <context>

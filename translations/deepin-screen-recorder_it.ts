@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="it">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Spiega</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Traduci</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Chiedi a AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Riassunto</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ o utilizza nuovamente la scorciatoia da tastiera per terminare la registrazione<
         <source>Open Folder</source>
         <translation>Apri cartella</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ o utilizza nuovamente la scorciatoia da tastiera per terminare la registrazione<
         <source>Pin Screenshots</source>
         <translation>Blocca screenshot</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ o utilizza nuovamente la scorciatoia da tastiera per terminare la registrazione<
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Screenshot</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Registrazione in corso</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ o utilizza nuovamente la scorciatoia da tastiera per terminare la registrazione<
         <translation>Registrazione completata</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Salvato in %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Registrazione</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Apri cartella</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Cattura schermo</translation>
     </message>
 </context>
 <context>

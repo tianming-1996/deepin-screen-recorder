@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="sq">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Shpjegoje</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Përktheni</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Pyetni AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Përmbledhje</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ klikoni ikonën e panelit, ose rishtypni shkurtoren</translation>
         <source>Open Folder</source>
         <translation>Hapni Dosje</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ klikoni ikonën e panelit, ose rishtypni shkurtoren</translation>
         <source>Pin Screenshots</source>
         <translation>Fiksoni Foto Ekrani</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ klikoni ikonën e panelit, ose rishtypni shkurtoren</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Foto ekrani</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Regjistrim</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ klikoni ikonën e panelit, ose rishtypni shkurtoren</translation>
         <translation>Regjistrimi përfundoi</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>U ruajt te %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Regjistroje</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Hapni Dosje</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Regjistrim Ekrani</translation>
     </message>
 </context>
 <context>

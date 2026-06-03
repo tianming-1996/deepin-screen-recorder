@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="tr">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Açıklama</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Çevir</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>AI&apos;ye sor</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Özet</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ tepsi simgesine tıklayın ya da kısayola yeniden basın</translation>
         <source>Open Folder</source>
         <translation>Klasör Aç</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ tepsi simgesine tıklayın ya da kısayola yeniden basın</translation>
         <source>Pin Screenshots</source>
         <translation>Ekran Görüntülerini Sabitle</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ tepsi simgesine tıklayın ya da kısayola yeniden basın</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Ekran Görüntüsü</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Kaydediyor</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ tepsi simgesine tıklayın ya da kısayola yeniden basın</translation>
         <translation>Kayıt tamamlandı</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Şuraya kaydedildi %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Kayıt</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Klasör Aç</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Ekran Alıntısı</translation>
     </message>
 </context>
 <context>

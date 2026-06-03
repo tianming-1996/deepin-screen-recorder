@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="pl">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Wyjaśnij</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Przetłumacz</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Zapytaj AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Podsumowanie</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ lub naciśnij ponownie skrót, aby zatrzymać nagrywanie</translation>
         <source>Open Folder</source>
         <translation>Otwórz folder</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ lub naciśnij ponownie skrót, aby zatrzymać nagrywanie</translation>
         <source>Pin Screenshots</source>
         <translation>Przypnij zrzuty ekranu</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -145,6 +176,17 @@ lub naciśnij ponownie skrót, aby zatrzymać nagrywanie</translation>
     </message>
     <message>
         <source>Record</source>
+        <translation type="unfinished">Nagrywanie</translation>
+    </message>
+</context>
+<context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Zrzut ekranu</translation>
+    </message>
+    <message>
+        <source>Recording</source>
         <translation type="unfinished">Nagrywanie</translation>
     </message>
 </context>
@@ -159,16 +201,16 @@ lub naciśnij ponownie skrót, aby zatrzymać nagrywanie</translation>
         <translation>Nagrywanie zakończone</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Zapisano w %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Nagrywanie</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Otwórz folder</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Przechwytywanie ekranu</translation>
     </message>
 </context>
 <context>

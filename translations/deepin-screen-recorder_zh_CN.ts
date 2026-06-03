@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>解释</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>翻译</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>问问 AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>总结</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -118,6 +137,10 @@ or press the shortcut again to stop recording</source>
         <source>Screenshot finished and copy to clipboard</source>
         <translation>截图完成，文件已复制到剪贴板</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -139,6 +162,10 @@ or press the shortcut again to stop recording</source>
     <message>
         <source>Pin Screenshots</source>
         <translation>贴图</translation>
+    </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

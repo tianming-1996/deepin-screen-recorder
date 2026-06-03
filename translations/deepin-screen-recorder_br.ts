@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="br">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Dizober</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Kemmoù</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Kemer an AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Kemmoù</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ pe bouezit adarre war ar verradenn evit paouez an enrolladenn</translation>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ pe bouezit adarre war ar verradenn evit paouez an enrolladenn</translation>
         <source>Pin Screenshots</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ pe bouezit adarre war ar verradenn evit paouez an enrolladenn</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Tapadenn-skramm</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ pe bouezit adarre war ar verradenn evit paouez an enrolladenn</translation>
         <translation>Enrollañ echuet</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Enrollet e-barzh %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Enrollañ</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Tapadenn skramm</translation>
     </message>
 </context>
 <context>

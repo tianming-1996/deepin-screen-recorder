@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Expliquer</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Traduire</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Demander à AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Résumé</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ ou appuyer à nouveau sur le raccourci pour arrêter l&apos;enregistrement</tran
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ ou appuyer à nouveau sur le raccourci pour arrêter l&apos;enregistrement</tran
         <source>Pin Screenshots</source>
         <translation>Captures d&apos;écran de l&apos;épingle</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ ou appuyer à nouveau sur le raccourci pour arrêter l&apos;enregistrement</tran
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Capture d&apos;écran</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Enregistrement</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ ou appuyer à nouveau sur le raccourci pour arrêter l&apos;enregistrement</tran
         <translation>Enregistrement terminé</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Enregistré dans %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Capture d&apos;écran</translation>
     </message>
 </context>
 <context>

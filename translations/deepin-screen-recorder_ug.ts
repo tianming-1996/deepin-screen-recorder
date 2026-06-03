@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ug">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>تەڭشەش</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>تەڭشەش</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>تەڭشەش</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>تەڭشەش</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -113,6 +132,14 @@ or press the shortcut again to stop recording</source>
         <source>Open Folder</source>
         <translation>ھۆججەت قىسقۇچنى ئېچىش</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -134,6 +161,10 @@ or press the shortcut again to stop recording</source>
     <message>
         <source>Pin Screenshots</source>
         <translation>چاپلاق</translation>
+    </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -169,16 +200,16 @@ or press the shortcut again to stop recording</source>
         <translation>سىنغا ئېلىش تاماملاندى </translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation> %1 گە ساقلاندى</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>سىنغا ئېلىش</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>ھۆججەت قىسقۇچنى ئېچىش</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">ئېكراننى رەسىم تۇتۇش، سىنغا ئېلىش</translation>
     </message>
 </context>
 <context>

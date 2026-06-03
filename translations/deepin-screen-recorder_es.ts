@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="es">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Explicar</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Traducir</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Preguntar a AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Resumen</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ o haga clic en el icono de la bandeja</translation>
         <source>Open Folder</source>
         <translation>Abrir carpeta</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ o haga clic en el icono de la bandeja</translation>
         <source>Pin Screenshots</source>
         <translation>Anclar captura de pantalla</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ o haga clic en el icono de la bandeja</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Captura de pantalla</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Grabaciones</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ o haga clic en el icono de la bandeja</translation>
         <translation>Grabación finalizada</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Guardado en %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Grabación</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Abrir carpeta</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Captura de pantalla</translation>
     </message>
 </context>
 <context>

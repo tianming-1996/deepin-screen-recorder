@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ca">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Explica</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Traduï</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Pregunta a l&apos;IA</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Resum</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ o premeu la drecera de nou per aturar la gravació.</translation>
         <source>Open Folder</source>
         <translation>Obre la carpeta</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ o premeu la drecera de nou per aturar la gravació.</translation>
         <source>Pin Screenshots</source>
         <translation>Fixa les captures</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ o premeu la drecera de nou per aturar la gravació.</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Captura de pantalla</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Gavació</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ o premeu la drecera de nou per aturar la gravació.</translation>
         <translation>Gravació acabada</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>S&apos;ha desat a %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Grava</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Obre la carpeta</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Captura de pantalla</translation>
     </message>
 </context>
 <context>

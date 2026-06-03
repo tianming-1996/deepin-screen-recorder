@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="da">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Forklare</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Oversæt</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Spørg AI</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Resumé</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ eller tryk på genvejen igen, for at stoppe optagelse</translation>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ eller tryk på genvejen igen, for at stoppe optagelse</translation>
         <source>Pin Screenshots</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ eller tryk på genvejen igen, for at stoppe optagelse</translation>
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Skærmbillede</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ eller tryk på genvejen igen, for at stoppe optagelse</translation>
         <translation>Optagelse færdig</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Gemt til %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Optag</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Skærmoptagelse</translation>
     </message>
 </context>
 <context>

@@ -149,6 +149,7 @@ HEADERS += main_window.h \
     widgets/keybuttonwidget.h \
     widgets/sidebar.h \
     widgets/shottoolwidget.h \
+    widgets/aiassistantwidget.h \
     widgets/colortoolwidget.h \
     dbusinterface/dbusnotify.h \
     dbusservice/dbusscreenshotservice.h \
@@ -163,6 +164,7 @@ HEADERS += main_window.h \
     recordertablet.h \
     dbusinterface/ocrinterface.h \
     dbusinterface/pinscreenshotsinterface.h \
+    dbusinterface/aiassistantinterface.h \
     gstrecord/gstrecordx.h \
     gstrecord/gstinterface.h \
     camera/majorimageprocessingthread.h \
@@ -216,6 +218,7 @@ SOURCES += main.cpp \
     widgets/keybuttonwidget.cpp \
     widgets/sidebar.cpp \
     widgets/shottoolwidget.cpp \
+    widgets/aiassistantwidget.cpp \
     widgets/colortoolwidget.cpp \
     dbusinterface/dbusnotify.cpp \
     dbusservice/dbusscreenshotservice.cpp \
@@ -230,6 +233,7 @@ SOURCES += main.cpp \
     recordertablet.cpp \
     dbusinterface/ocrinterface.cpp \
     dbusinterface/pinscreenshotsinterface.cpp \
+    dbusinterface/aiassistantinterface.cpp \
     gstrecord/gstrecordx.cpp \
     gstrecord/gstinterface.cpp \
     camera/majorimageprocessingthread.cpp \

@@ -2,6 +2,25 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="hu">
 <context>
+    <name>AIAssistantWidget</name>
+    <message>
+        <source>Explain</source>
+        <translation>Magyarázat</translation>
+    </message>
+    <message>
+        <source>Translate</source>
+        <translation>Fordítás</translation>
+    </message>
+    <message>
+        <source>Ask AI</source>
+        <translation>Kérdezzen AI-t</translation>
+    </message>
+    <message>
+        <source>Summary</source>
+        <translation>Összefoglaló</translation>
+    </message>
+</context>
+<context>
     <name>CountdownTooltip</name>
     <message>
         <source>Click the tray icon 
@@ -114,6 +133,14 @@ vagy nyomja le a gyorsbillentyűt ismét a felvétel megállításához</transla
         <source>Open Folder</source>
         <translation>Mappa megnyitása</translation>
     </message>
+    <message>
+        <source>%1服务有错误：%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Screenshot finished and copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuController</name>
@@ -136,6 +163,10 @@ vagy nyomja le a gyorsbillentyűt ismét a felvétel megállításához</transla
         <source>Pin Screenshots</source>
         <translation>Képernyőképek kitűzése</translation>
     </message>
+    <message>
+        <source>FullScreenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
@@ -149,6 +180,17 @@ vagy nyomja le a gyorsbillentyűt ismét a felvétel megállításához</transla
     </message>
 </context>
 <context>
+    <name>RecordIconWidget</name>
+    <message>
+        <source>Screenshot</source>
+        <translation type="unfinished">Képernyőkép</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished">Rögzítés</translation>
+    </message>
+</context>
+<context>
     <name>RecordProcess</name>
     <message>
         <source>View</source>
@@ -159,16 +201,16 @@ vagy nyomja le a gyorsbillentyűt ismét a felvétel megállításához</transla
         <translation>A felvétel befejeződött</translation>
     </message>
     <message>
-        <source>Saved to %1</source>
-        <translation>Mentve ide: %1</translation>
-    </message>
-    <message>
         <source>Record</source>
         <translation>Felvétel</translation>
     </message>
     <message>
         <source>Open Folder</source>
         <translation>Mappa megnyitása</translation>
+    </message>
+    <message>
+        <source>Screen Capture</source>
+        <translation type="unfinished">Képernyő Rögzítő</translation>
     </message>
 </context>
 <context>
