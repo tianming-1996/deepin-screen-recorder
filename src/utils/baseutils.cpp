@@ -12,6 +12,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QIcon>
+#include <QStandardPaths>
 
 const QSize START_SIZE = QSize(15, 15);
 const QSize RECT_SIZE = QSize(22, 26);
@@ -157,14 +158,5 @@ bool BaseUtils::isValidFormat(QString suffix)
 
 bool BaseUtils::isCommandExist(QString command)
 {
-    QProcess *proc = new QProcess;
-    if (!proc) {
-        return false;
-    }
-    QString cm = QString("which %1\n").arg(command);
-    proc->start(cm);
-    proc->waitForFinished(1000);
-    int ret = proc->exitCode() == 0;
-    delete proc;
-    return ret;
+    return !QStandardPaths::findExecutable(command).isEmpty();
 }
