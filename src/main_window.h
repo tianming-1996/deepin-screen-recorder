@@ -709,6 +709,8 @@ protected:
      */
 #ifdef OCR_SCROLL_FLAGE_ON
     void scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostion, int direction, qint64 mouseTime = 0);
+    void finishWaylandScrollShotCapture();
+    void restoreWaylandScrollShotWidgets();
 #endif
     /**
      * @brief 判断工具栏是否在在捕捉区域内部
@@ -925,6 +927,11 @@ private:
     PreviewWidget::PostionStatus m_waylandManualScrollPreviewPostion = PreviewWidget::PostionStatus::RIGHT;
     int m_waylandManualScrollDirection = 0;
     qint64 m_waylandManualScrollMouseTime = 0;
+    bool m_waylandScrollShotCapturePending = false;
+    bool m_waylandScrollShotCaptureScheduled = false;
+    bool m_waylandScrollShotToolBarHidden = false;
+    bool m_waylandScrollShotSizeTipsHidden = false;
+    bool m_waylandScrollShotPreviewHidden = false;
 
     ButtonFeedback *buttonFeedback = nullptr;
     /**

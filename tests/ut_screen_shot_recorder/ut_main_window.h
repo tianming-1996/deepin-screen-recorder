@@ -1433,6 +1433,11 @@ TEST_F(MainWindowTest, showScrollShot)
 
 ACCESS_PRIVATE_FIELD(MainWindow, bool, m_isZhaoxin);
 ACCESS_PRIVATE_FIELD(MainWindow, int, m_scrollShotType);
+ACCESS_PRIVATE_FIELD(MainWindow, bool, m_waylandScrollShotCapturePending);
+ACCESS_PRIVATE_FIELD(MainWindow, bool, m_waylandScrollShotCaptureScheduled);
+ACCESS_PRIVATE_FIELD(MainWindow, PreviewWidget::PostionStatus, m_waylandManualScrollPreviewPostion);
+ACCESS_PRIVATE_FIELD(MainWindow, int, m_waylandManualScrollDirection);
+ACCESS_PRIVATE_FIELD(MainWindow, qint64, m_waylandManualScrollMouseTime);
 //滚动截图模式，抓取当前捕捉区域的图片，传递给滚动截图处理类进行图片的拼接，单元测试
 TEST_F(MainWindowTest, scrollShotGrabPixmap)
 {
@@ -1501,6 +1506,69 @@ TEST_F(MainWindowTest, scrollShotGrabPixmap)
 //    delete MainWindow_previewWidget;
     delete window;
 
+}
+
+//Wayland下连续触发采帧时，应该串行执行并合并最新一次请求，避免多次延时截图交叉入队
+TEST_F(MainWindowTest, scrollShotGrabPixmapWaylandSchedulesOneCapture)
+{
+    stub.set(ADDR(MainWindow, initMainWindow), initMainWindow_stub);
+    Utils::isWaylandMode = true;
+
+    MainWindow *window = new MainWindow();
+    int &MainWindow_scrollShotType = access_private_field::MainWindowm_scrollShotType(*window);
+    MainWindow_scrollShotType = ScrollShotType::ManualScroll;
+
+    ScrollScreenshot *&MainWindow_m_scrollShot = access_private_field::MainWindowm_scrollShot(*window);
+    MainWindow_m_scrollShot = new ScrollScreenshot;
+    stub.set(ADDR(ScrollScreenshot, setScrollModel), setScrollModel_stub);
+    stub.set(ADDR(ScrollScreenshot, addPixmap), addPixmap_stub);
+
+    auto MainWindow_isToolBarInShotArea = get_private_fun::MainWindowisToolBarInShotArea();
+    stub.set(MainWindow_isToolBarInShotArea, isToolBarInShotArea_stub);
+
+    TopTips *&MainWindow_scrollShotSizeTips = access_private_field::MainWindowm_scrollShotSizeTips(*window);
+    MainWindow_scrollShotSizeTips = new TopTips();
+
+    ToolBar *&MainWindow_toolBar = access_private_field::MainWindowm_toolBar(*window);
+    MainWindow_toolBar = new ToolBar();
+    MainWindow_toolBar->resize(500, 100);
+    MainWindow_toolBar->move(0, 0);
+
+    int &MainWindow_recordX = access_private_field::MainWindowrecordX(*window);
+    MainWindow_recordX = 0;
+    int &MainWindow_recordY = access_private_field::MainWindowrecordY(*window);
+    MainWindow_recordY = 0;
+    int &MainWindow_recordWidth = access_private_field::MainWindowrecordWidth(*window);
+    MainWindow_recordWidth = 1920;
+    int &MainWindow_recordHeight = access_private_field::MainWindowrecordHeight(*window);
+    MainWindow_recordHeight = 1080;
+    qreal &MainWindow_m_pixelRatio = access_private_field::MainWindowm_pixelRatio(*window);
+    MainWindow_m_pixelRatio = 1.0;
+
+    QRect previewRecordRect(0, 0, 1920, 1080);
+    PreviewWidget *&MainWindow_previewWidget = access_private_field::MainWindowm_previewWidget(*window);
+    MainWindow_previewWidget = new PreviewWidget(previewRecordRect);
+    MainWindow_previewWidget->setScreenInfo(1920, MainWindow_m_pixelRatio);
+    MainWindow_previewWidget->initPreviewWidget();
+
+    call_private_fun::MainWindowscrollShotGrabPixmap(*window, PreviewWidget::PostionStatus::INSIDE, 5, 111);
+    call_private_fun::MainWindowscrollShotGrabPixmap(*window, PreviewWidget::PostionStatus::RIGHT, 4, 222);
+
+    EXPECT_TRUE(access_private_field::MainWindowm_waylandScrollShotCaptureScheduled(*window));
+    EXPECT_TRUE(access_private_field::MainWindowm_waylandScrollShotCapturePending(*window));
+    EXPECT_EQ(PreviewWidget::PostionStatus::RIGHT, access_private_field::MainWindowm_waylandManualScrollPreviewPostion(*window));
+    EXPECT_EQ(4, access_private_field::MainWindowm_waylandManualScrollDirection(*window));
+    EXPECT_EQ(222, access_private_field::MainWindowm_waylandManualScrollMouseTime(*window));
+
+    stub.reset(ADDR(ScrollScreenshot, setScrollModel));
+    stub.reset(ADDR(ScrollScreenshot, addPixmap));
+    stub.reset(MainWindow_isToolBarInShotArea);
+    stub.reset(ADDR(MainWindow, initMainWindow));
+    Utils::isWaylandMode = false;
+
+    delete MainWindow_m_scrollShot;
+    delete MainWindow_scrollShotSizeTips;
+    delete window;
 }
 
 static void updateImage_stub(void *obj, QImage img)

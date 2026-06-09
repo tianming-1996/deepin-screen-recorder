@@ -1561,6 +1561,65 @@ void MainWindow::showAdjustArea()
 #endif
 }
 #ifdef OCR_SCROLL_FLAGE_ON
+void MainWindow::restoreWaylandScrollShotWidgets()
+{
+    if (!Utils::isWaylandMode) {
+        return;
+    }
+
+    if (m_waylandScrollShotToolBarHidden && m_toolBar) {
+        m_toolBar->show();
+    }
+    if (m_waylandScrollShotSizeTipsHidden && m_scrollShotSizeTips) {
+        m_scrollShotSizeTips->show();
+    }
+    if (m_waylandScrollShotPreviewHidden && m_previewWidget) {
+        m_previewWidget->show();
+    }
+
+    m_waylandScrollShotToolBarHidden = false;
+    m_waylandScrollShotSizeTipsHidden = false;
+    m_waylandScrollShotPreviewHidden = false;
+}
+
+void MainWindow::finishWaylandScrollShotCapture()
+{
+    if (!m_initScroll || !m_scrollShot || status::scrollshot != m_functionType || m_isErrorWithScrollShot) {
+        m_waylandScrollShotCaptureScheduled = false;
+        m_waylandScrollShotCapturePending = false;
+        if (!m_isSaveScrollShot) {
+            restoreWaylandScrollShotWidgets();
+        }
+        return;
+    }
+
+    if (ScrollShotType::AutoScroll == m_scrollShotType) {
+        m_scrollShot->setScrollModel(false);
+    } else if (ScrollShotType::ManualScroll == m_scrollShotType) {
+        if (m_waylandManualScrollMouseTime > 0) {
+            m_scrollShot->setTimeAndCalculateTimeDiff(m_waylandManualScrollMouseTime);
+        } else {
+            m_scrollShot->setTimeAndCalculateTimeDiff(QDateTime::currentMSecsSinceEpoch());
+        }
+        m_scrollShot->setScrollModel(true);
+    }
+
+    bool ok;
+    QRect rect(recordX + m_scrollShotOffsetXY, recordY + m_scrollShotOffsetXY, recordWidth - m_scrollShotOffsetWH, recordHeight - m_scrollShotOffsetWH);
+    QPixmap img = m_screenGrabber.grabEntireDesktop(ok, rect, m_pixelRatio);
+    if (ok && !img.isNull()) {
+        m_scrollShot->addPixmap(img, m_waylandManualScrollDirection);
+    }
+
+    m_waylandScrollShotCaptureScheduled = false;
+    if (m_waylandScrollShotCapturePending) {
+        m_waylandScrollShotCapturePending = false;
+        scrollShotGrabPixmap(m_waylandManualScrollPreviewPostion,
+                             m_waylandManualScrollDirection,
+                             m_waylandManualScrollMouseTime);
+    }
+}
+
 //滚动截图模式，抓取当前捕捉区域的图片，传递给滚动截图处理类进行图片的拼接
 void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostion, int direction, qint64 mouseTime)
 {
@@ -1573,6 +1632,37 @@ void MainWindow::scrollShotGrabPixmap(PreviewWidget::PostionStatus previewPostio
 #else
     static int delayTime = 50;
 #endif
+    // Wayland 下 KWin fullscreen 截图会看到应用自身窗口，避免多次定时采帧交叉以及每帧反复显示/隐藏控件。
+    if (Utils::isWaylandMode) {
+        m_waylandManualScrollPreviewPostion = previewPostion;
+        m_waylandManualScrollDirection = direction;
+        m_waylandManualScrollMouseTime = mouseTime;
+
+        if (m_waylandScrollShotCaptureScheduled) {
+            m_waylandScrollShotCapturePending = true;
+            return;
+        }
+
+        m_waylandScrollShotCaptureScheduled = true;
+        m_waylandScrollShotCapturePending = false;
+
+        if (isToolBarInShotArea() && m_toolBar && m_toolBar->isVisible()) {
+            m_toolBar->hide();
+            m_waylandScrollShotToolBarHidden = true;
+        }
+        if (m_scrollShotSizeTips && m_scrollShotSizeTips->isVisible()) {
+            m_scrollShotSizeTips->hide();
+            m_waylandScrollShotSizeTipsHidden = true;
+        }
+        if (PreviewWidget::PostionStatus::INSIDE == previewPostion && m_previewWidget && m_previewWidget->isVisible()) {
+            m_previewWidget->hide();
+            m_waylandScrollShotPreviewHidden = true;
+        }
+
+        QTimer::singleShot(delayTime, this, &MainWindow::finishWaylandScrollShotCapture);
+        return;
+    }
+
     //滚动截图处理类：设置滚动截图的模式
     if (ScrollShotType::AutoScroll == m_scrollShotType) {
         m_scrollShot->setScrollModel(false);
@@ -5836,6 +5926,7 @@ void MainWindow::pauseAutoScrollShot()
     qDebug() << "function:" << __func__ << " ,line: " << __LINE__ << " 暂停自动滚动截图!";
     //自动滚动截图改变状态，暂停自动滚动
     m_scrollShot->changeState(true);
+    restoreWaylandScrollShotWidgets();
 #endif
 }
 
